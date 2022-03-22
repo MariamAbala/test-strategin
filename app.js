@@ -4,6 +4,8 @@ const PORT = 4000
 const { MONGOURI } = require('./keys')
 const mongoose = require('mongoose')
 
+const AuthentificationRoute = require('./routes/authentification')
+
 
 
 //connect to database
@@ -19,6 +21,8 @@ mongoose.connection.on('error',(err)=>{
     console.log('MongoDB connection failed',console.err)
 })
 
+app.use(express.json())
+
 app.get('/',(req,res)=>{
     res.send('Test Technique StrategIn')
 })
@@ -26,3 +30,5 @@ app.get('/',(req,res)=>{
 app.listen(PORT,()=>{
     console.log('-- Server is Running on ',PORT)
 })
+
+app.use('/',AuthentificationRoute)
