@@ -31,4 +31,4 @@ app.listen(PORT,()=>{
     console.log('-- Server is Running on ',PORT)
 })
 
-app.use('/',AuthentificationRoute)
+app.use('/',AuthentificationRoute)  
