@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const jwt=require('jsonwebtoken')
 const { use } = require('express/lib/application')
 
+
 const register = (req, res, next) => {
 
     //hashing password 
@@ -75,8 +76,17 @@ const login = (req,res,next) => {
     
 };
 
+const find_users =  (req,res,next) =>{
+    User.find()
+    .then(users => {
+        res.json({users})
+    }).catch(err =>{
+        console.log("erreur d'affichage des utilisateurs ! "+err);
+    })
+}
 module.exports = {
     register,
-    login
+    login,
+    find_users
 }
 
