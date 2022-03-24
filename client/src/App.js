@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import Login from './components/Login';
 import Register from './components/Register';
+import Users from './components/Users';
 import "bootstrap/dist/css/bootstrap.min.css"
 
 function App(){
@@ -19,6 +20,7 @@ function App(){
                 <Routes>
                     <Route path="/register" element={<Register/>}></Route>
                     <Route path="/login" element={<Login/>}></Route>
+                    <Route path="/users" element={<Users/>}></Route>
                 </Routes>
             </BrowserRouter>
     </div>
