@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
     mdp : {
         type:String,
         required : true,
-        select : false
+       
     }
 })
 

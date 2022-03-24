@@ -9,9 +9,10 @@ const register = (req, res, next) => {
     //hashing password 
     bcrypt.hash(req.body.mdp, 10, function(err,hashedMdp){
         if(err) {
-            res.json({
-                error : err
-            })
+            return res.status(200).json({ // Worked
+                status_code: 0,
+                error_msg: "erreur hashing password",
+              });
         }
 
         let user = new User({
@@ -21,7 +22,7 @@ const register = (req, res, next) => {
         User.findOne({$or :[{email:user.email}]}).then( user_exist => {
             if(user_exist){
                 res.json({
-                    message : ' utilisateur déjà existe !'
+                    error : ' utilisateur déjà existe !'
                 })
             }else{
                 user.save().then(user =>{
@@ -31,7 +32,7 @@ const register = (req, res, next) => {
                 })
                 .catch(err => {
                     res.json({
-                        message : "Erreur lors de l'ajout d'un utilisateur "+err
+                        error : "Erreur lors de l'ajout d'un utilisateur "
                      })
                 })
             }

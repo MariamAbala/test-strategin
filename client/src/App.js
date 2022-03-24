@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {BrowserRouter,Route,Routes} from 'react-router-dom'
 import Login from './components/Login';
 import Register from './components/Register';
 import Users from './components/Users';
 import "bootstrap/dist/css/bootstrap.min.css"
+import "../src/App.css"
+
 
 function App(){
     return (
