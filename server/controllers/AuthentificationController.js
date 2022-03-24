@@ -58,19 +58,22 @@ const login = (req,res,next) => {
                 }
                 if(result){
                     let token = jwt.sign({email : user_found.email},'**secretValue**',{expiresIn:'1h'})
+                    const{_id,email}=user_found
                     res.json({
                         message:'utilisateur connecté !',
-                        token
+                        token,
+                        user:{_id,email}
                     })
                 }else{
                     res.json({
-                        message : 'mot de passe / email invalide !! '
+                        error : 'mot de passe / email invalide !! '
                     })
                 }
             })
+            
         }else{
             res.json({
-                message : 'mot de passe / email invalide !!'
+                error : 'mot de passe / email invalide !!'
             })
         }
     })
